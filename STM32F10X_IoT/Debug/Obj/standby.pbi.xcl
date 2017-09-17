@@ -1,4 +1,4 @@
-"C:\Users\one\Documents\GitHub\IoT\STM32F10X_IoT\DRIVER\src\usart.c"
+"C:\Users\one\Documents\GitHub\IoT\STM32F10X_IoT\DRIVER\src\standby.c"
 -std=c11
 -ferror-limit=0
 -I

@@ -2339,6 +2339,9 @@
                 <name>$PROJ_DIR$\DRIVER\inc\mq7.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\DRIVER\inc\standby.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\DRIVER\inc\timer.h</name>
             </file>
             <file>
@@ -2352,6 +2355,9 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\DRIVER\src\mq7.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\DRIVER\src\standby.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\DRIVER\src\timer.c</name>

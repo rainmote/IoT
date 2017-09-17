@@ -3,7 +3,7 @@
 #include "usart.h"
 
 #include "dht11.h"
-#include "mq7.h"
+#include "standby.h"
 
 #define Led_On   GPIO_SetBits(GPIOC, GPIO_Pin_13)
 #define Led_Off  GPIO_ResetBits(GPIOC, GPIO_Pin_13)
@@ -26,18 +26,14 @@ int main()
     SystemInit();
     systick_init();
     
-    //初始化usart
     usart_config();
-    
-    //初始化mq7
-    mq7_gpio_init();
-    
+    rtc_configuration();
+
     LED_Init();
     
     while (1)
     {
         Led_On;
-         
         u8 buffer[5];
         double humidness;
         double temperature;
@@ -47,9 +43,7 @@ int main()
             temperature = buffer[2] + buffer[3] / 10.0;
         }
         
-        u8 is_alarm = MQ7_IN;
-        
-        usart_printf("温度: %.2f\t湿度: %.2f\tMQ7:%d\n", temperature, humidness, is_alarm);
+        usart_printf("___{\"temperature\": %.2f, \"humidness\": %.2f}___", temperature, humidness);
        
 //        USART_SendData(USART1, buffer[0]);
 //        while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
@@ -63,5 +57,7 @@ int main()
         delay_us(500000);
         Led_Off;
         delay_us(1000000);
+        
+        PWR_EnterSTANDBYMode();
     }
 }

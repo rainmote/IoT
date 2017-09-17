@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\one\Desktop\智能家具\STM32\STM32F10X_IoT\settings\STM32F10X_Template.Debug.general.xcl" --backend -f "C:\Users\one\Desktop\智能家具\STM32\STM32F10X_IoT\settings\STM32F10X_Template.Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\one\Documents\GitHub\IoT\STM32F10X_IoT\settings\STM32F10X_Template.Debug.general.xcl" --backend -f "C:\Users\one\Documents\GitHub\IoT\STM32F10X_IoT\settings\STM32F10X_Template.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\one\Desktop\智能家具\STM32\STM32F10X_IoT\settings\STM32F10X_Template.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\one\Desktop\智能家具\STM32\STM32F10X_IoT\settings\STM32F10X_Template.Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\one\Documents\GitHub\IoT\STM32F10X_IoT\settings\STM32F10X_Template.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\one\Documents\GitHub\IoT\STM32F10X_IoT\settings\STM32F10X_Template.Debug.driver.xcl" 
 
 @echo off 
 :end
