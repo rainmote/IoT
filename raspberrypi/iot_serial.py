@@ -5,7 +5,7 @@ import serial
 import json
 import time
 
-class CSerial:
+class Serial:
     def __init__(self, port, baudrate = 9600):
         self.__ser = serial.Serial(port, baudrate, timeout=0.5)
 
@@ -13,6 +13,8 @@ class CSerial:
         self.__ser.close()
 
     def GetData(self):
+        self.FlushInput()
+
         while True:
             time.sleep(0.1)
 
@@ -27,9 +29,11 @@ class CSerial:
 
 
 if __name__ == '__main__':
-    s = CSerial('/dev/ttyUSB0')
+    s = Serial('/dev/ttyUSB0')
     while True:
-        s.FlushInput()
 
-        j = json.dumps(s.GetData())
-        print '%s\t%s' %(time.time(), j)
+        try:
+            j = json.dumps(s.GetData())
+            print '%s\t%s' %(time.time(), j)
+        except:
+            continue

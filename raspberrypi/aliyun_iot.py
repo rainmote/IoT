@@ -8,9 +8,6 @@ import hashlib
 import requests
 import traceback
 
-import urllib3
-urllib3.disable_warnings()
-
 
 class AliyunIot():
     CONF_FILE = 'config.json'
@@ -46,7 +43,7 @@ class AliyunIot():
         param['sign'] = self.GetSign(self.__config['deviceSecret'], param)
 
         pre = requests.Request('POST', url=self.__config['url'], data=param).prepare()
-        res = self.__s.send(pre, verify=False, timeout=3)
+        res = self.__s.send(pre, cert=self.__config['cert'], timeout=3)
         if res.text:
             try:
                 resp = json.loads(res.text)
