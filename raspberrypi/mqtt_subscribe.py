@@ -16,12 +16,10 @@ def MessageCallback(client, userdata, msg):
     print '%s -> %s' %(msg.topic, str(msg.payload))
 
 dev_id = GetMacAddr()
-print dev_id
 dev_id='test001'
 
-a = AliyunIot()
-conf = a.DeviceAuthentication('temperature_sensor', dev_id)
-print conf
+a = AliyunIot('config_subscribe.json')
+conf = a.DeviceAuthentication(dev_id)
 
 client = mqtt.Client(dev_id)
 client.on_connect = ConnectCallback

@@ -18,11 +18,9 @@ def ConnectCallback(client, userdata, flags, rc):
     print 'Connected:' + str(rc)
 
 dev_id = GetMacAddr()
-print dev_id
 
 a = AliyunIot()
-conf = a.DeviceAuthentication('temperature_sensor', dev_id)
-print conf
+conf = a.DeviceAuthentication(dev_id)
 
 client = mqtt.Client(dev_id)
 client.on_connect = ConnectCallback

@@ -12,9 +12,11 @@ import traceback
 class AliyunIot():
     CONF_FILE = 'config.json'
 
-    def __init__(self):
+    def __init__(self, config_file = None):
+        if not config_file:
+            config_file = self.CONF_FILE
         self.__s = requests.Session()
-        self.__config = self.__load_config(self.CONF_FILE)
+        self.__config = self.__load_config(config_file)
 
     def __load_config(self, filename):
         with open(filename) as f:
@@ -29,11 +31,11 @@ class AliyunIot():
         c = ''.join([''.join(str(j) for j in i) for i in sorted(p, key=lambda x:x[0])])
         return hmac.new(str(secret), c, hashlib.md5).hexdigest()
 
-    def DeviceAuthentication(self, device_name, client_id, resources = 'mqtt'):
+    def DeviceAuthentication(self, client_id, resources = 'mqtt'):
         timestamp = int(time.time())
 
         param = {'productKey': self.__config['productKey'],
-                 'deviceName': device_name,
+                 'deviceName': self.__config['deviceName'],
                  'sign': None,
                  'signmethod': 'hmacmd5',
                  'clientId': client_id,
@@ -57,4 +59,4 @@ class AliyunIot():
 
 if __name__ == '__main__':
     a = AliyunIot()
-    print a.DeviceAuthentication('temperature_sensor', '01')
+    print a.DeviceAuthentication('001')

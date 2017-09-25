@@ -33,7 +33,7 @@ if __name__ == '__main__':
     while True:
 
         try:
-            j = json.dumps(s.GetData())
+            j = json.loads(s.GetData())
             print '%s\t%s' %(time.time(), j)
         except:
             continue
