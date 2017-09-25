@@ -25,10 +25,8 @@ int main()
 {
     SystemInit();
     systick_init();
-    
     usart_config();
     rtc_configuration();
-
     LED_Init();
     
     while (1)
@@ -43,21 +41,10 @@ int main()
             temperature = buffer[2] + buffer[3] / 10.0;
         }
         
-        usart_printf("___{\"temperature\": %.2f, \"humidness\": %.2f}___", temperature, humidness);
-       
-//        USART_SendData(USART1, buffer[0]);
-//        while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
-//        USART_SendData(USART1, buffer[1]);
-//        while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
-//        USART_SendData(USART1, buffer[2]);
-//        while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
-//        USART_SendData(USART1, buffer[3]);
-//        while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+        usart_printf("___{\"temperature\": %.2f, \"humidness\": %.2f}___\n", temperature, humidness);
         
-        delay_us(500000);
-        Led_Off;
         delay_us(1000000);
-        
+        Led_Off;
         PWR_EnterSTANDBYMode();
     }
 }

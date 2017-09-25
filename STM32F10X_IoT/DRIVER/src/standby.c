@@ -64,7 +64,7 @@ void rtc_configuration(void)
     RTC_WaitForLastTask();
     
     //…Ë÷√ƒ÷¡Â ±÷”
-    RTC_SetAlarm(RTC_GetCounter() + 15);
+    RTC_SetAlarm(RTC_GetCounter() + 30);
     RTC_WaitForLastTask();
 }
 
